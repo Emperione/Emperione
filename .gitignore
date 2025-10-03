@@ -298,9 +298,9 @@ local/
 # -----------------------------------------------------------------------------
 # KEEP THESE DIRECTORIES
 # -----------------------------------------------------------------------------
-# Explicitly NOT ignoring docs and tasks directories
-!docs/
-!tasks/
+# Explicitly IGNORING docs and tasks directories temporarily
+docs/
+tasks/
 
 # =============================================================================
 # END OF GITIGNORE
