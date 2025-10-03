@@ -1,0 +1,64 @@
+{
+  "name": "emperione-discord",
+  "version": "1.0.0",
+  "description": "A unified Discord community management suite combining analytics, moderation tools, member management, and growth tracking with AI-powered insights",
+  "private": true,
+  "workspaces": [
+    "bot",
+    "api",
+    "dashboard"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:bot\" \"npm run dev:api\" \"npm run dev:dashboard\"",
+    "dev:bot": "npm run dev --workspace=bot",
+    "dev:api": "npm run dev --workspace=api",
+    "dev:dashboard": "npm run dev --workspace=dashboard",
+    "build": "npm run build --workspaces",
+    "build:bot": "npm run build --workspace=bot",
+    "build:api": "npm run build --workspace=api",
+    "build:dashboard": "npm run build --workspace=dashboard",
+    "test": "npm run test --workspaces",
+    "test:all": "npm run test --workspaces --if-present",
+    "test:bot": "npm run test --workspace=bot",
+    "test:api": "npm run test --workspace=api",
+    "test:dashboard": "npm run test --workspace=dashboard",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "clean": "npm run clean --workspaces --if-present && rm -rf node_modules",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "community-management",
+    "analytics",
+    "moderation",
+    "discord-bot",
+    "dashboard",
+    "open-source"
+  ],
+  "author": "Emperione Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/emperione-discord.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/emperione-discord/issues"
+  },
+  "homepage": "https://github.com/yourusername/emperione-discord#readme",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "concurrently": "^8.2.2",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
