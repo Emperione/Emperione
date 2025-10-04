@@ -1,0 +1,18 @@
+# CODEOWNERS for Emperione repository
+
+# Default owners for everything
+# Added maintainers for direct review requests
+* @emperione @BCAndrei @excelle
+
+# Package-specific ownership
+/api/ @emperione/api
+/bot/ @emperione/bot
+/dashboard/ @emperione/frontend
+
+# Infrastructure and CI
+.github/ @emperione
+
+# Docs
+/docs/ @emperione
+
+# Add specific maintainers or teams as needed
