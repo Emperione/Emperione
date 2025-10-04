@@ -1,26 +1,41 @@
 import 'dotenv/config';
 import { Client, GatewayIntentBits } from 'discord.js';
+import config from './config/config';
 
-const token = process.env.DISCORD_TOKEN;
-if (!token) {
-  console.error('DISCORD_TOKEN not set in environment');
-  process.exit(1);
-}
+// Basic logger (replace with structured logger later)
+const log = (level: 'info' | 'warn' | 'error', msg: string) => console[level](`${new Date().toISOString()} [${level.toUpperCase()}] ${msg}`);
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 client.once('ready', () => {
-  console.log(`Bot ready: ${client.user?.tag}`);
+  log('info', `Bot ready: ${client.user?.tag}`);
 });
 
 client.on('messageCreate', (message) => {
   if (message.author.bot) return;
   if (message.content === '!ping') {
-    message.reply('Pong!');
+    message.reply('Pong!').catch((err) => log('error', `reply failed: ${String(err)}`));
   }
 });
 
-client.login(token).catch((err) => {
-  console.error('Failed to login', err);
-  process.exit(1);
-});
+async function start() {
+  try {
+    await client.login(config.discordToken);
+    log('info', `Logged in (env=${config.nodeEnv})`);
+  } catch (err) {
+    log('error', `Failed to login: ${String(err)}`);
+    process.exit(1);
+  }
+}
+
+function shutdown() {
+  log('info', 'Shutting down bot...');
+  client.destroy();
+  process.exit(0);
+}
+
+process.on('SIGINT', shutdown);
+process.on('SIGTERM', shutdown);
+
+start();
+

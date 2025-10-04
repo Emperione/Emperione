@@ -284,6 +284,11 @@ backups/
 # Bot specific
 bot/commands.json
 bot/guilds-cache.json
+# Bot workspace artifacts
+bot/node_modules/
+bot/dist/
+bot/.env
+bot/.env.local
 
 # Analytics cache
 analytics-cache/
