@@ -1,7 +1,8 @@
 import { Router } from 'express';
+import { serversController } from '../controllers/serversController';
 
 const router = Router();
 
-router.get('/', (_req, res) => res.json({ servers: [] }));
+router.get('/', serversController.list);
 
 export default router;

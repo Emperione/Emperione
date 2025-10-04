@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+// Supabase-native replacement for database client
+import supabase from './supabase';
 
-const prisma = new PrismaClient();
-
-export default prisma;
+export default supabase;
