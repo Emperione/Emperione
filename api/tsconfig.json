@@ -1,24 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "module": "CommonJS",
-    "outDir": "dist",
-    "rootDir": "src",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src/**/*"]
-}
-{
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
     "types": ["node", "jest"],
     "module": "commonjs",
-    "target": "ES2022"
+    "target": "ES2022",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*", "prisma/generated/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
