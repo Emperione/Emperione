@@ -7,36 +7,43 @@ on:
     paths:
       - 'bot/**'
       - '.github/workflows/ci.yml'
-  push:
-    branches:
-      - main
+  name: CI
 
-jobs:
-  bot-tests:
-    name: "Bot: test"
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./bot
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  on:
+    pull_request:
+      paths:
+        - 'bot/**'
+        - '.github/workflows/ci.yml'
+    push:
+      branches:
+        - main
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
+  jobs:
+    bot-tests:
+      name: "Bot: test"
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./bot
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm ci
+        - name: Use Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '18'
+            cache: 'npm'
 
-      - name: Run tests
-        run: npm test -- --coverage
+        - name: Install dependencies
+          run: npm ci
 
-      - name: Upload coverage (optional)
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: bot-coverage
-          path: ./coverage
+        - name: Run tests
+          run: npm test -- --coverage
+
+        - name: Upload coverage (optional)
+          if: ${{ always() }}
+          uses: actions/upload-artifact@v4
+          with:
+            name: bot-coverage
+            path: ./coverage
