@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  discordId String   @unique
+  createdAt DateTime @default(now())
+  servers   Server[]
+}
+
+model Server {
+  id        String   @id @default(cuid())
+  guildId   String   @unique
+  name      String
+  members   Member[]
+  createdAt DateTime @default(now())
+}
+
+model Member {
+  id        String   @id @default(cuid())
+  server    Server   @relation(fields: [serverId], references: [id])
+  serverId  String
+  discordId String
+  roles     String[]
+  joinedAt  DateTime
+}
+
+model ModerationAction {
+  id        String   @id @default(cuid())
+  serverId  String
+  memberId  String
+  type      String
+  reason    String?
+  createdAt DateTime @default(now())
+}
+
+model AnalyticsSnapshot {
+  id        String   @id @default(cuid())
+  serverId  String
+  timeframe String
+  data      Json
+  createdAt DateTime @default(now())
+}
+
+model ModerationRule {
+  id        String   @id @default(cuid())
+  serverId  String
+  name      String
+  condition Json
+  action    Json
+  enabled   Boolean  @default(true)
+}
+
+model Alert {
+  id        String   @id @default(cuid())
+  serverId  String
+  type      String
+  payload   Json
+  createdAt DateTime @default(now())
+}
