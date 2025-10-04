@@ -1,27 +1,37 @@
-import { z } from 'zod';
 import dotenv from 'dotenv';
+import { z } from 'zod';
 
 dotenv.config();
 
-const envSchema = z.object({
-  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+export const ApiConfigSchema = z.object({
+  NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.string().optional(),
   DATABASE_URL: z.string().url().optional(),
 });
 
-export type ApiConfig = z.infer<typeof envSchema> & { port?: number; nodeEnv: string };
+export type ApiConfig = {
+  port?: number;
+  nodeEnv: 'development' | 'test' | 'production';
+  databaseUrl?: string;
+};
 
 export function loadConfig(): ApiConfig {
-  const parsed = envSchema.safeParse(process.env);
+  const parsed = ApiConfigSchema.safeParse(process.env);
+
   if (!parsed.success) {
+    // Print friendly validation errors and exit
     // eslint-disable-next-line no-console
-    console.error('API environment validation failed:', parsed.error.format());
-    throw new Error('Invalid API environment variables');
+    console.error('Invalid environment variables:');
+    // eslint-disable-next-line no-console
+    console.error(parsed.error.format());
+    throw new Error('Invalid environment configuration');
   }
-  const result = parsed.data;
+
+  const cfg = parsed.data;
+
   return {
-    ...result,
-    port: result.PORT ? Number(result.PORT) : undefined,
-    nodeEnv: result.NODE_ENV,
+    nodeEnv: cfg.NODE_ENV,
+    port: cfg.PORT ? Number(cfg.PORT) : undefined,
+    databaseUrl: cfg.DATABASE_URL,
   };
 }
