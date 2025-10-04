@@ -1,0 +1,307 @@
+# =============================================================================
+# EMPERIONE DISCORD COMMUNITY MANAGEMENT SUITE - GITIGNORE
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# ENVIRONMENT & SECRETS
+# -----------------------------------------------------------------------------
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env*.local
+
+# Environment variable backup files
+*.env.backup
+
+# -----------------------------------------------------------------------------
+# DEPENDENCIES
+# -----------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# Package manager lock files (optional - comment out if you want to commit them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# -----------------------------------------------------------------------------
+# BUILD OUTPUTS
+# -----------------------------------------------------------------------------
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+*.tsbuildinfo
+
+# Compiled JavaScript from TypeScript
+*.js.map
+*.d.ts.map
+
+# -----------------------------------------------------------------------------
+# LOGS
+# -----------------------------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+.yarn-integrity
+
+# Runtime logs
+bot.log
+api.log
+app.log
+combined.log
+error.log
+
+# -----------------------------------------------------------------------------
+# TESTING
+# -----------------------------------------------------------------------------
+coverage/
+.nyc_output/
+*.lcov
+.jest-cache/
+.vitest/
+
+# Test reports
+test-results/
+junit.xml
+coverage.xml
+
+# -----------------------------------------------------------------------------
+# DATABASE
+# -----------------------------------------------------------------------------
+# SQLite databases
+*.sqlite
+*.sqlite3
+*.db
+
+# Database dumps
+*.sql.gz
+*.dump
+
+# Prisma
+prisma/.env
+prisma/migrations/**/*.sql.backup
+
+# -----------------------------------------------------------------------------
+# TEMPORARY FILES
+# -----------------------------------------------------------------------------
+tmp/
+temp/
+*.tmp
+*.temp
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# -----------------------------------------------------------------------------
+# IDE & EDITOR
+# -----------------------------------------------------------------------------
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# -----------------------------------------------------------------------------
+# OPERATING SYSTEM
+# -----------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# -----------------------------------------------------------------------------
+# EXPORTS & UPLOADS
+# -----------------------------------------------------------------------------
+exports/
+uploads/
+public/uploads/
+static/uploads/
+
+# Report exports
+*.csv
+*.pdf
+!docs/**/*.pdf
+!docs/**/*.csv
+
+# -----------------------------------------------------------------------------
+# DOCKER
+# -----------------------------------------------------------------------------
+.dockerignore
+docker-compose.override.yml
+*.dockerfile.local
+
+# Docker volumes
+postgres-data/
+redis-data/
+
+# -----------------------------------------------------------------------------
+# REDIS & CACHE
+# -----------------------------------------------------------------------------
+dump.rdb
+*.rdb
+.cache/
+cache/
+
+# -----------------------------------------------------------------------------
+# CERTIFICATES & KEYS
+# -----------------------------------------------------------------------------
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+ssl/
+
+# SSH keys
+id_rsa
+id_rsa.pub
+*.ppk
+
+# -----------------------------------------------------------------------------
+# BACKUP FILES
+# -----------------------------------------------------------------------------
+*.backup
+*.bak
+*.old
+backup/
+backups/
+
+# -----------------------------------------------------------------------------
+# MISC
+# -----------------------------------------------------------------------------
+# Vercel
+.vercel
+
+# Turbo
+.turbo
+
+# Sentry
+.sentryclirc
+
+# ESLint cache
+.eslintcache
+
+# Prettier cache
+.prettiercache
+
+# Stylelint cache
+.stylelintcache
+
+# TypeScript incremental compilation
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Yarn PnP
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# -----------------------------------------------------------------------------
+# PROJECT SPECIFIC
+# -----------------------------------------------------------------------------
+# Bot specific
+bot/commands.json
+bot/guilds-cache.json
+
+# Analytics cache
+analytics-cache/
+
+# Temporary data exports
+data-exports/
+
+# Local development overrides
+*.local.*
+local/
+
+# -----------------------------------------------------------------------------
+# KEEP THESE DIRECTORIES
+# -----------------------------------------------------------------------------
+# Explicitly IGNORING docs and tasks directories temporarily
+docs/
+tasks/
+
+# =============================================================================
+# END OF GITIGNORE
+# =============================================================================
