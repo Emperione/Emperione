@@ -195,11 +195,11 @@
   - [ ] 3.1 Initialize API package with Express, Prisma, and necessary dependencies
   - [ ] 3.2 Design and create Prisma schema (api/prisma/schema.prisma) with models: User, Server, Member, Message, ModerationAction, AnalyticsSnapshot, ModerationRule, Alert
   - [ ] 3.3 Create initial database migration and seed script
-  - [ ] 3.4 Set up database connection with connection pooling
-  - [ ] 3.5 Configure Redis for caching and session storage
-  - [ ] 3.6 Create Express server entry point with middleware stack (CORS, body-parser, compression)
+  - [x] 3.4 Set up database connection with connection pooling
+  - [x] 3.5 Configure Redis for caching and session storage
+  - [x] 3.6 Create Express server entry point with middleware stack (CORS, body-parser, compression)
   - [ ] 3.7 Implement authentication middleware using JWT and Discord OAuth validation
-  - [ ] 3.8 Create rate limiting middleware with Redis-backed storage
+  - [x] 3.8 Create rate limiting middleware with Redis-backed storage
   - [ ] 3.9 Implement global error handling middleware
   - [ ] 3.10 Set up request validation middleware with Zod or Joi
   - [ ] 3.11 Create API route structure and route aggregator
