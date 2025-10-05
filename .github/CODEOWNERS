@@ -2,7 +2,7 @@
 
 # Default owners for everything
 # Added maintainers for direct review requests
-* @emperione @BCAndrei @excelle
+* @BCAndrei @excelle
 
 # Package-specific ownership
 /api/ @emperione/api

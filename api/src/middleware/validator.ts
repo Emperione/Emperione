@@ -1,6 +1,16 @@
 import { Request, Response, NextFunction } from 'express';
+import { ZodSchema } from 'zod';
 
-export function validator(_req: Request, _res: Response, next: NextFunction) {
-  // Placeholder for request validation using Zod/Joi
-  next();
+export function validateBody(schema: ZodSchema<any>) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    try {
+      schema.parse(req.body);
+      next();
+      return;
+    } catch (err: any) {
+      return res.status(400).json({ error: err.errors || err.message });
+    }
+  };
 }
+
+export default { validateBody };
