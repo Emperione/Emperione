@@ -59,6 +59,7 @@
   "include": [
     "bot/src/**/*",
     "api/src/**/*",
+    "api/scripts/**/*",
     "dashboard/src/**/*",
     "tasks/**/*",
     "supabase/migrations/**/*"

@@ -12,6 +12,7 @@ module.exports = {
       './tsconfig.json',
       './bot/tsconfig.json',
       './api/tsconfig.json',
+      './api/tsconfig.scripts.json',
       './dashboard/tsconfig.json'
     ],
     tsconfigRootDir: __dirname,
@@ -90,7 +91,8 @@ module.exports = {
         project: [
           './tsconfig.json',
           './bot/tsconfig.json',
-          './api/tsconfig.json',
+            './api/tsconfig.json',
+            './api/tsconfig.scripts.json',
           './dashboard/tsconfig.json'
         ],
         tsconfigRootDir: __dirname,

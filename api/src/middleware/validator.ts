@@ -1,10 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
-import { ZodSchema } from 'zod';
+import { ZodSchema, ZodTypeAny } from 'zod';
 
-export function validateBody(schema: ZodSchema<any>) {
+function handleParse(resultKey: 'body' | 'query' | 'params', schema: ZodSchema<ZodTypeAny>) {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
-      schema.parse(req.body);
+      const parsed = schema.parse((req as any)[resultKey]);
+
+      // Attach parsed value back to the request. We also expose a `validated` bag for convenience.
+      (req as any)[resultKey] = parsed;
+      (req as any).validated = { ...(req as any).validated, [resultKey]: parsed };
+
       next();
       return;
     } catch (err: any) {
@@ -13,4 +18,16 @@ export function validateBody(schema: ZodSchema<any>) {
   };
 }
 
-export default { validateBody };
+export function validateBody(schema: ZodSchema<any>) {
+  return handleParse('body', schema);
+}
+
+export function validateQuery(schema: ZodSchema<any>) {
+  return handleParse('query', schema);
+}
+
+export function validateParams(schema: ZodSchema<any>) {
+  return handleParse('params', schema);
+}
+
+export default { validateBody, validateQuery, validateParams };
