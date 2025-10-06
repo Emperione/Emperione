@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import { serversController } from '../controllers/serversController';
 import { requireAuth } from '../middleware/auth';
 import { validateBody } from '../middleware/validator';

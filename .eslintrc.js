@@ -8,7 +8,13 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: [
+      './tsconfig.json',
+      './bot/tsconfig.json',
+      './api/tsconfig.json',
+      './dashboard/tsconfig.json'
+    ],
+    tsconfigRootDir: __dirname,
   },
   plugins: ['@typescript-eslint', 'import', 'prettier'],
   extends: [
@@ -81,7 +87,13 @@ module.exports = {
     'import/resolver': {
       typescript: {
         alwaysTryTypes: true,
-        project: './tsconfig.json',
+        project: [
+          './tsconfig.json',
+          './bot/tsconfig.json',
+          './api/tsconfig.json',
+          './dashboard/tsconfig.json'
+        ],
+        tsconfigRootDir: __dirname,
       },
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],

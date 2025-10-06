@@ -16,6 +16,7 @@
     "supabase:status": "supabase migration status",
     "migrate:run": "ts-node ./scripts/run-migrations.ts",
     "migrate:check": "node -e \"require('dotenv').config(); console.log(process.env.DATABASE_URL? 'DATABASE_URL set' : 'DATABASE_URL NOT set')\"",
+  "db:check": "node ./scripts/db-check.js",
     "prisma:generate": "echo \"Prisma removed: use supabase client or generate types from SQL.\"",
     "lint": "eslint src --ext .ts"
   },

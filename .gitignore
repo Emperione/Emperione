@@ -306,7 +306,3 @@ local/
 # Explicitly IGNORING docs and tasks directories temporarily
 docs/
 tasks/
-
-# =============================================================================
-# END OF GITIGNORE
-# =============================================================================

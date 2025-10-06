@@ -56,7 +56,13 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "include": [],
+  "include": [
+    "bot/src/**/*",
+    "api/src/**/*",
+    "dashboard/src/**/*",
+    "tasks/**/*",
+    "supabase/migrations/**/*"
+  ],
   "exclude": [
     "node_modules",
     "dist",

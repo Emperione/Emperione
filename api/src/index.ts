@@ -1,9 +1,10 @@
-import express from 'express';
 import compression from 'compression';
 import cors from 'cors';
+import express from 'express';
+
 import { loadConfig } from './config/config';
-import serversRoutes from './routes/servers.routes';
 import authRoutes from './routes/auth.routes';
+import serversRoutes from './routes/servers.routes';
 
 const config = loadConfig();
 
@@ -12,7 +13,9 @@ app.use(cors());
 app.use(compression());
 app.use(express.json());
 
-app.get('/health', (_req, res) => res.json({ status: 'ok', env: config.nodeEnv }));
+app.get('/health', (_req, res) =>
+  res.json({ status: 'ok', env: config.nodeEnv })
+);
 
 // API routes
 app.use('/api/servers', serversRoutes);

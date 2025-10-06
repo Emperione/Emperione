@@ -1,5 +1,4 @@
 import { Message } from 'discord.js';
-import logger from '../utils/logger';
 
 export default function registerMessageCreate() {
   return async (message: Message) => {
