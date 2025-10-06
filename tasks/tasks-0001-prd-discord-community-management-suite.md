@@ -201,9 +201,12 @@
   - [ ] 3.7 Implement authentication middleware using JWT and Discord OAuth validation
   - [x] 3.8 Create rate limiting middleware with Redis-backed storage
   - [ ] 3.9 Implement global error handling middleware
-  - [ ] 3.10 Set up request validation middleware with Zod or Joi
-  - [ ] 3.11 Create API route structure and route aggregator
-  - [ ] 3.12 Implement logging utility for API requests and errors
+  - [x] 3.10 Set up request validation middleware with Zod or Joi
+  -     - Implementation: `api/src/middleware/validator.ts`, `api/src/types/express.d.ts`, routes updated (e.g. `api/src/routes/servers.routes.ts`)
+  - [x] 3.11 Create API route structure and route aggregator
+  -     - Implementation: `api/src/routes/index.ts` (aggregator), `api/src/index.ts` updated to mount `/api`
+  - [x] 3.12 Implement logging utility for API requests and errors
+  -     - Implementation: `api/src/utils/logger.ts`, `api/src/middleware/requestLogger.ts`, `api/src/middleware/errorHandler.ts` (wired in `api/src/index.ts`)
   - [ ] 3.13 Set up Bull queue for background jobs (analytics aggregation, alerts processing)
   - [ ] 3.14 Write integration tests for API setup
 
