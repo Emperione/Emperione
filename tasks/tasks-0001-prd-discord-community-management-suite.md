@@ -192,9 +192,9 @@
   - [x] 2.12 Write unit tests for commands and services
 
 - [ ] 3.0 Backend API & Database Architecture
-  - [ ] 3.1 Initialize API package with Express, Prisma, and necessary dependencies
-  - [ ] 3.2 Design and create Prisma schema (api/prisma/schema.prisma) with models: User, Server, Member, Message, ModerationAction, AnalyticsSnapshot, ModerationRule, Alert
-  - [ ] 3.3 Create initial database migration and seed script
+  - [ ] 3.1 Initialize API package with Express and Supabase (supabase CLI) and necessary dependencies
+  - [x] 3.2 Design and create database schema using Supabase SQL migrations (supabase/migrations/) with models: User, Server, Member, Message, ModerationAction, AnalyticsSnapshot, ModerationRule, Alert
+  - [ ] 3.3 Create initial Supabase migration(s) and seed script (store in `supabase/migrations/`)
   - [x] 3.4 Set up database connection with connection pooling
   - [x] 3.5 Configure Redis for caching and session storage
   - [x] 3.6 Create Express server entry point with middleware stack (CORS, body-parser, compression)

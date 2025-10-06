@@ -4,7 +4,9 @@ import { z } from 'zod';
 dotenv.config();
 
 export const ApiConfigSchema = z.object({
-  NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
+  NODE_ENV: z
+    .enum(['development', 'test', 'production'])
+    .default('development'),
   PORT: z.string().optional(),
   DATABASE_URL: z.string().url().optional(),
 });

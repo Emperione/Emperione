@@ -1,10 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
+
 import redis from '../config/redis';
 
 // Defaults (requests per window)
 const ANON_LIMIT = parseInt(process.env['RATE_LIMIT_ANON'] || '60', 10); // anonymous users
 const AUTH_LIMIT = parseInt(process.env['RATE_LIMIT_AUTH'] || '600', 10); // authenticated users
-const WINDOW_SECONDS = parseInt(process.env['RATE_LIMIT_WINDOW_SECONDS'] || '60', 10); // window size in seconds
+const WINDOW_SECONDS = parseInt(
+  process.env['RATE_LIMIT_WINDOW_SECONDS'] || '60',
+  10
+); // window size in seconds
 
 function getIdentifier(req: Request) {
   // Prefer authenticated subject if available (requireAuth middleware should set req.user)
@@ -20,10 +24,14 @@ function getIdentifier(req: Request) {
   return `ip:unknown`;
 }
 
-export async function rateLimiter(req: Request, res: Response, next: NextFunction) {
+export async function rateLimiter(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const identifier = getIdentifier(req);
 
-  const isAuthenticated = (req as any).user && (req as any).user.sub;
+  const isAuthenticated = (req as any).user?.sub;
   const limit = isAuthenticated ? AUTH_LIMIT : ANON_LIMIT;
 
   // Fixed window key per window period
@@ -57,7 +65,10 @@ export async function rateLimiter(req: Request, res: Response, next: NextFunctio
   } catch (err) {
     // Fail-open: if Redis is down, allow requests but log the issue
     // eslint-disable-next-line no-console
-    console.warn('Rate limiter error, allowing request (fail-open):', err && (err as Error).message);
+    console.warn(
+      'Rate limiter error, allowing request (fail-open):',
+      err && (err as Error).message
+    );
     next();
   }
 }
